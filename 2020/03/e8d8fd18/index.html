@@ -1,0 +1,807 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#FF5E81">
+  <meta name="description" content="佑奈的梦想是希望大家都能够生活在自己希望和喜欢的地方。希望每一个人都能够因为自己的选择，因为自己的周围的每一个生命，环境，知识而开心，不会需要再去担忧更多的东西，可以有时间去探索更多自己想要去探索获得的东西，因为这样，才是能专注追求自己的世界呀。">
+  <meta name="author" content="花見佑奈">
+  <meta name="keywords" content="hanamiyuna">
+  <title>被 CloudFlare 耽误的 v2ray ws+tls - 七彩繁星下</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>七彩繁星下</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://i.loli.net/2020/03/27/vYlSZb2kerfW5AD.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <p class="mt-3 post-meta author-line">
+                
+                  
+                  
+                  <i class="fas fa-pen-fancy"></i> 作者 花見佑奈 · <a href=https://await.moe class="collaborator-a">香織可可</a>
+                
+              </p>
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  2020 年 3 月 27日 星期五 01:23 凌晨
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    本文有 3.7k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      阅读时间 ≈ 15 分钟
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">被 CloudFlare 耽误的 v2ray ws+tls</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>如果参考本文章，请确保您有一定的 Linux 和 Cli 使用水平，佑奈在这里会省略很多内容，直接说明最关键的和 CloudFlare 相关的 CDN 部分。</p>
+<p>如果想跳过本文冗长的废话，只想看最后找到的原因和解决方案的话，请直接前往 <a href="#最后">最后</a>。</p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>v2ray 作为开源代理解决方案，经历了时间的推敲，也有了很大的用户群体。佑奈这边一直是坚持自己搭建自己的服务，从 Shadowsocks，SSR，到现在的 v2ray，经历了好多时代，所以现在也有在看网络上关于 v2ray 的资料和资源。</p>
+<p>早在今年年初的时候因为疫情的消息影响，自己的服务不太稳定，v2ray 本身的 KCP 协议在当时被封杀的很严重，就想着去试试好早之前看到的一个 v2ray 配置文件模版 —— <a target="_blank" rel="noopener" href="https://github.com/KiriKira/vTemplate">KiraKira/vTemplate</a>。</p>
+<p><img src="https://github.com/KiriKira/vTemplate/raw/master/How_To_Choose.jpg" srcset="/img/loading.gif" alt=""></p>
+<center>图源：<a target="_blank" rel="noopener" href="https://github.com/KiriKira/vTemplate">KiraKira/vTemplate</a></center>
+
+<br>
+
+<p>也就是在当时，想着要不要试试看 ws + tls（WebSocket + TLS）这样的配置方案，相比 KCP 使用 UDP 作为协议而言，虽然有速度上的减损，但是稳定性应该会好不少；虽然在佑奈写这篇文章的时候，封锁的力度稍为降低了一些，在上周的时候如果直接检测到 KCP 就是直接封锁的。</p>
+<p>抱着这样的心态，当时就开始了折腾。</p>
+<h1 id="第一次-v2ray-ws-tls"><a href="#第一次-v2ray-ws-tls" class="headerlink" title="第一次 v2ray ws+tls"></a>第一次 v2ray ws+tls</h1><p>根据 vTemplate 的配置文件，也参考了来自白话文教程关于 WebSocket + TLS + Nginx 的<a target="_blank" rel="noopener" href="https://toutyrater.github.io/advanced/wss_and_web.html">页面</a>。自己尝试开始配置一个全新的服务器。</p>
+<p>当时是这样的，因为考虑到有地方说 ws+tls 搭配一个可以直接访问的网站会更好，就想着用 Nginx 作为前置的页面服务器来接受请求，这样的话还可以在同一个 VPS 上跑好几个测试用的页面，所以佑奈就选择了这样的系统和软件配置：<br>Debian 10 + v2ray （通过官方脚本安装）+ Nginx</p>
+<h2 id="安装-v2ray"><a href="#安装-v2ray" class="headerlink" title="安装 v2ray"></a>安装 v2ray</h2><p>v2ray 安装很简单，用官网提供的脚本直接安装：</p>
+<pre><code class="hljs bash">$ bash &lt;(curl -L -s https://install.direct/go.sh)</code></pre>
+
+<p>直接照搬了 vTemplate 的配置文件写法，然后专门改了 path 和 Host</p>
+<pre><code class="hljs json">...
+&quot;streamSettings&quot;: &#123;
+  &quot;network&quot;: &quot;ws&quot;, 
+  &quot;security&quot;: &quot;auto&quot;, 
+  &quot;wsSettings&quot;: &#123;
+    &quot;path&quot;: &quot;/根据很多博客的建议，这里填写了随机生成的码&quot;, 
+    &quot;headers&quot;: &#123;
+      &quot;Host&quot;: &quot;node1.v3.domain.com&quot;
+    &#125;
+  &#125;
+&#125;
+...</code></pre>
+
+<h2 id="配置-Nginx"><a href="#配置-Nginx" class="headerlink" title="配置 Nginx"></a>配置 Nginx</h2><p>然后就是 Nginx 的配置文件：</p>
+<pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;
+  <span class="hljs-attribute">listen</span>  <span class="hljs-number">443</span> ssl;
+  <span class="hljs-attribute">ssl</span> <span class="hljs-literal">on</span>;
+  <span class="hljs-attribute">ssl_certificate</span>       /etc/v2ray/v2ray.crt;
+  <span class="hljs-attribute">ssl_certificate_key</span>   /etc/v2ray/v2ray.key;
+  <span class="hljs-attribute">ssl_protocols</span>         TLSv1 TLSv1.<span class="hljs-number">1</span> TLSv1.<span class="hljs-number">2</span>;
+  <span class="hljs-attribute">ssl_ciphers</span>           HIGH:!aNULL:!MD5;
+  <span class="hljs-attribute">server_name</span>           node1.v3.domain.com;
+        <span class="hljs-attribute">location</span> /随机码 &#123; <span class="hljs-comment"># 与 V2Ray 配置中的 path 保持一致</span>
+                <span class="hljs-attribute">proxy_redirect</span> <span class="hljs-literal">off</span>;
+                <span class="hljs-attribute">proxy_pass</span> http://127.0.0.1:10000;<span class="hljs-comment">#假设WebSocket监听在环回地址的10000端口上</span>
+                <span class="hljs-attribute">proxy_http_version</span> <span class="hljs-number">1</span>.<span class="hljs-number">1</span>;
+                <span class="hljs-attribute">proxy_set_header</span> Upgrade <span class="hljs-variable">$http_upgrade</span>;
+                <span class="hljs-attribute">proxy_set_header</span> Connection <span class="hljs-string">&quot;upgrade&quot;</span>;
+                <span class="hljs-attribute">proxy_set_header</span> Host <span class="hljs-variable">$http_host</span>;
+
+                <span class="hljs-comment"># Show realip in v2ray access.log</span>
+                <span class="hljs-attribute">proxy_set_header</span> X-Real-IP <span class="hljs-variable">$remote_addr</span>;
+                <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+        &#125;
+&#125;</code></pre>
+
+<h2 id="申请-SSL"><a href="#申请-SSL" class="headerlink" title="申请 SSL"></a>申请 SSL</h2><p>本身也没有什么特别的东西，然后开始准备申请自己的证书。</p>
+<p>还是像往常一样，先跑去 CloudFlare 把自己的 A 记录填上自己的 VPS IP，然后用 ACME.sh 申请：</p>
+<h3 id="安装-ACME-sh"><a href="#安装-ACME-sh" class="headerlink" title="安装 ACME.sh"></a>安装 ACME.sh</h3><pre><code class="hljs bash">$ curl  https://get.acme.sh | sh
+$ <span class="hljs-built_in">source</span> .bashrc</code></pre>
+
+<h3 id="使用-ACME-sh-申请"><a href="#使用-ACME-sh-申请" class="headerlink" title="使用 ACME.sh 申请"></a>使用 ACME.sh 申请</h3><pre><code class="hljs bash">$ systemctl stop nginx
+$ ~/.acme.sh/acme.sh --issue -d node2.v3.domain.com --standalone -k ec-256
+$ ~/.acme.sh/acme.sh --installcert -d node2.v3.domain.com --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc</code></pre>
+
+<p>这样就把 crt 和 key 放在指定的位置了。</p>
+<p>于是高兴的把 Nginx 和 v2ray 跑起来……</p>
+<p>去 Google Chrome 里面输入了 google.com 做例行测试————</p>
+<p>结果居然连不上！</p>
+<p>打开 v2ray log 看了看，发现这么一行：</p>
+<pre><code class="hljs vim"><span class="hljs-number">2020</span>/<span class="hljs-number">02</span>/<span class="hljs-number">03</span> <span class="hljs-number">09</span>:<span class="hljs-number">54</span>:<span class="hljs-number">00</span> [Warning] failed <span class="hljs-keyword">to</span> handler mux client connection &gt; 
+v2ray.<span class="hljs-keyword">com</span>/core/proxy/vmess/outbound: failed <span class="hljs-keyword">to</span> <span class="hljs-keyword">find</span> <span class="hljs-keyword">an</span> available destination &gt; 
+v2ray.<span class="hljs-keyword">com</span>/core/common/retry: [v2ray.<span class="hljs-keyword">com</span>/core/transport/internet/websocke<span class="hljs-variable">t:</span> 
+failed <span class="hljs-keyword">to</span> dial WebSocket &gt; v2ray.<span class="hljs-keyword">com</span>/core/transport/internet/websocke<span class="hljs-variable">t:</span> failed 
+<span class="hljs-keyword">to</span> dial <span class="hljs-keyword">to</span> (<span class="hljs-keyword">ws</span><span class="hljs-variable">s:</span>//node1.v3.domain.<span class="hljs-keyword">com</span>/path):  &gt; remote error: 
+<span class="hljs-keyword">tl</span><span class="hljs-variable">s:</span> handshake failure] &gt; v2ray.<span class="hljs-keyword">com</span>/core/common/retry: <span class="hljs-keyword">all</span> retry attempts failed</code></pre>
+
+<p>（思考状… <strong><code>failed to dial WebSocket</code></strong> ? <strong><code>tls: handshake failure</code></strong> ?</p>
+<p>这个就很迷惑了啊！</p>
+<p>然后就开始查资料：</p>
+<p><img src="https://i.loli.net/2020/03/27/O8qSuG3EYDXNlfr.png" srcset="/img/loading.gif" alt=""></p>
+<p>打开了第一个结果：</p>
+<p>啊，原来是这样，那应该就是证书的 CDN 问题。</p>
+<p><img src="https://i.loli.net/2020/03/27/SxqgV6oBP3DKQMZ.png" srcset="/img/loading.gif" alt=""></p>
+<p>想了想自己的配置方法（只写了 443 端口的反代理配置），并不是很想再去写一个 80 端口的配置，就直接选择把 CloudFlare 的 CDN 关掉了。</p>
+<p>返回到 Google Chrome —— 现在可以访问了！测试了 YouTube，能够正常访问。</p>
+<p>然后佑奈当晚就去睡觉了，也没有再多管什么事情…</p>
+<h3 id="第二天的折腾"><a href="#第二天的折腾" class="headerlink" title="第二天的折腾"></a>第二天的折腾</h3><p>第二天想了想还是不行，希望能够找到一个比较好的解决方案。继续翻昨天的搜索结果，看到了这样的回复：</p>
+<p><img src="https://i.loli.net/2020/03/27/xafiMPEAc1gujkr.png" srcset="/img/loading.gif" alt=""></p>
+<p>突然想起来自己的这个域名一直都是映射 IP，并没有设置过 CloudFlare 的那个 SSL 等级。于是跑去修改了 CF 的 SSL 等级为 Full，再来尝试连接：</p>
+<p>还是不行。打开 log：</p>
+<pre><code class="hljs vim"><span class="hljs-number">2020</span>/<span class="hljs-number">02</span>/<span class="hljs-number">03</span> <span class="hljs-number">09</span>:<span class="hljs-number">56</span>:<span class="hljs-number">45</span> [Warning] failed <span class="hljs-keyword">to</span> handler mux client connection &gt; 
+v2ray.<span class="hljs-keyword">com</span>/core/proxy/vmess/outbound: failed <span class="hljs-keyword">to</span> <span class="hljs-keyword">find</span> <span class="hljs-keyword">an</span> available destination &gt; 
+v2ray.<span class="hljs-keyword">com</span>/core/common/retry: [v2ray.<span class="hljs-keyword">com</span>/core/transport/internet/websocke<span class="hljs-variable">t:</span> 
+failed <span class="hljs-keyword">to</span> dial WebSocket &gt; v2ray.<span class="hljs-keyword">com</span>/core/transport/internet/websocke<span class="hljs-variable">t:</span> 
+failed <span class="hljs-keyword">to</span> dial <span class="hljs-keyword">to</span> (<span class="hljs-keyword">w</span><span class="hljs-variable">s:</span>//node1.v3.domain.<span class="hljs-keyword">com</span>:<span class="hljs-number">443</span>/path): <span class="hljs-number">400</span> Bad Request &gt; 
+websocke<span class="hljs-variable">t:</span> <span class="hljs-keyword">bad</span> handshake] &gt; v2ray.<span class="hljs-keyword">com</span>/core/common/retry: <span class="hljs-keyword">all</span> retry attempts failed</code></pre>
+
+<p>发现自己获得了新的错误：<strong><code>400 Bad Request</code></strong></p>
+<p>更迷惑了。</p>
+<p>然后跟着好多 issue 下面的回复提出来的不同情况下的不同解决方法：</p>
+<p>比如： </p>
+<ul>
+<li>Nginx 的 path 后面应该还有一个 /：<code>/path/</code></li>
+<li>v2ray 自己的 path 应该也是 <code>/path/</code></li>
+<li><code>Host</code> 关键字大小写问题</li>
+<li>v2ray 的 tls 设置</li>
+<li>本地 v2ray client 的 tls 设置（勾选<strong>允许不安全的连接</strong>）</li>
+<li>还有关闭 Nginx 只使用 v2ray 自己的 WebSocket</li>
+</ul>
+<p>统统不能解决以上的问题。</p>
+<p>（生气  (╯°Д°）╯︵ /(.□ . )</p>
+<p>这是什么问题嘛。</p>
+<p>当然，佑奈也有试着去重置所有的设定，甚至是重新写配置文件，还有 Nginx 的配置内容直接写到 <code>nginx.conf</code> 文件里，依然不奏效。（于是——</p>
+<p>放弃了。 CDN 咱们还是先不用了。因为也有人提到说：</p>
+<p><img src="https://i.loli.net/2020/03/27/lf9o1pVUvEye2DK.png" srcset="/img/loading.gif" alt=""></p>
+<center>v2ray-core/issues#1945: <a target="_blank" rel="noopener" href="https://github.com/v2ray/v2ray-core/issues/1945#issuecomment-549138263">MassSmith 的回复</a></center>
+
+
+
+<p>想了想，先放弃吧，一天又度过了。（还要一点一点把服务器还原回去… (。﹏。*)</p>
+<h3 id="额外的补充"><a href="#额外的补充" class="headerlink" title="额外的补充"></a>额外的补充</h3><p>当时在 Debug 域名解析和 SSL 的时候，发现点了 CDN 之后 Mac 还能连一会儿，但是 Windows 端和各移动平台就再也连不上服务器了，于是最后发现 Windows 每次被更改 DNS 的 CDN 设置的时候，原节点的连接就再也连不上了，除非手动 <code>ipconfig /flushdns</code> 然后等一会儿才行。</p>
+<p>所以根本就是 TTL 刷新问题啊？</p>
+<p>那为什么连不上呢？？？(。﹏。*)</p>
+<p>算了算了。</p>
+<h1 id="第二次-v2ray-ws-tls"><a href="#第二次-v2ray-ws-tls" class="headerlink" title="第二次 v2ray ws+tls"></a>第二次 v2ray ws+tls</h1><p>某天和 Cocoa 聊天的时候，就被推荐说要不要去试试 v2ray ws+tls + CF CDN，佑奈说大概是没有用的（因为上面说的那个经历，真的也许大概 maybe 不会有什么效果的！）然后还是自己好奇地去点了一下那个 CloudFlare 可爱的橙色小云朵。</p>
+<p>用 Mac 这边的 Google Chrome 刷新了一下 Google 首页：</p>
+<p><strong>诶？可以打开！</strong></p>
+<p>然后关掉了 v2ray 再打开，再刷新 Google 首页：</p>
+<p><strong>诶？？？怎么可以用了？？？</strong></p>
+<p>然后去到了 Windows：</p>
+<p><strong>無法連上這個網站</strong></p>
+<p><strong>找不到 google.com 的伺服器 IP 位址</strong></p>
+<p>ヽ(｀⌒´)ﾉ┻━┻︵ ┻━┻ 这又是什么玄学操作啊？</p>
+<p>当然，好景不长，</p>
+<p><img src="https://i.loli.net/2020/03/27/fathFErCIKbRiAw.png" srcset="/img/loading.gif" alt=""></p>
+<p>Mac 也访问不到了。<strong>好，又是 TTL 的锅。</strong></p>
+<p>佑奈向 Cocoa 发问：<strong>CDN 之后，除了 Mac 其他都访问不到了，怎么办？</strong></p>
+<h2 id="开始漫长的-Debug"><a href="#开始漫长的-Debug" class="headerlink" title="开始漫长的 Debug"></a>开始漫长的 Debug</h2><p>Nginx 还是之前那个：</p>
+<pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;
+  <span class="hljs-attribute">listen</span>  <span class="hljs-number">443</span> ssl;
+  <span class="hljs-attribute">ssl</span> <span class="hljs-literal">on</span>;
+  <span class="hljs-attribute">ssl_certificate</span>       /etc/v2ray/v2ray.crt;
+  <span class="hljs-attribute">ssl_certificate_key</span>   /etc/v2ray/v2ray.key;
+  <span class="hljs-attribute">ssl_protocols</span>         TLSv1 TLSv1.<span class="hljs-number">1</span> TLSv1.<span class="hljs-number">2</span>;
+  <span class="hljs-attribute">ssl_ciphers</span>           HIGH:!aNULL:!MD5;
+  <span class="hljs-attribute">server_name</span>           node1.v3.domain.com;
+        <span class="hljs-attribute">location</span> /PATH &#123; <span class="hljs-comment"># 与 V2Ray 配置中的 path 保持一致</span>
+            <span class="hljs-attribute">proxy_redirect</span> <span class="hljs-literal">off</span>;
+            <span class="hljs-attribute">proxy_pass</span> http://127.0.0.1:3000; <span class="hljs-comment">#假设WebSocket监听在环回地址的10000端口上</span>
+            <span class="hljs-attribute">proxy_http_version</span> <span class="hljs-number">1</span>.<span class="hljs-number">1</span>;
+            <span class="hljs-attribute">proxy_set_header</span> Upgrade <span class="hljs-variable">$http_upgrade</span>;
+               <span class="hljs-attribute">proxy_set_header</span> Connection <span class="hljs-string">&quot;upgrade&quot;</span>;
+            <span class="hljs-attribute">proxy_set_header</span> Host <span class="hljs-variable">$http_host</span>;
+
+            <span class="hljs-comment"># Show realip in v2ray access.log</span>
+            <span class="hljs-attribute">proxy_set_header</span> X-Real-IP <span class="hljs-variable">$remote_addr</span>;
+            <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+        &#125;
+&#125;</code></pre>
+
+<p>然后这个是 Cocoa 那边可用的 ws+tls CDN Nginx 配置：</p>
+<pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;
+    <span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl;
+    <span class="hljs-attribute">listen</span> [::]:<span class="hljs-number">443</span> ssl;
+
+    <span class="hljs-attribute">ssl_certificate</span>       /path/to/fullchain.pem;
+    <span class="hljs-attribute">ssl_certificate_key</span>   /path/to/privkey.pem;
+    <span class="hljs-attribute">ssl_session_timeout</span> <span class="hljs-number">1d</span>;
+    <span class="hljs-attribute">ssl_session_cache</span> shared:MozSSL:<span class="hljs-number">10m</span>;
+    <span class="hljs-attribute">ssl_session_tickets</span> <span class="hljs-literal">off</span>;
+
+    <span class="hljs-attribute">ssl_protocols</span>         TLSv1.<span class="hljs-number">2</span> TLSv1.<span class="hljs-number">3</span>;
+    <span class="hljs-attribute">ssl_ciphers</span>           ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+    <span class="hljs-attribute">ssl_prefer_server_ciphers</span> <span class="hljs-literal">off</span>;
+
+    <span class="hljs-attribute">server_name</span>           subdomain.domain.com;
+    <span class="hljs-attribute">location</span> /ray &#123;
+        <span class="hljs-attribute">if</span> (<span class="hljs-variable">$http_upgrade</span> != <span class="hljs-string">&quot;websocket&quot;</span>) &#123;
+                <span class="hljs-attribute">return</span> <span class="hljs-number">404</span>;
+        &#125;
+        <span class="hljs-attribute">proxy_redirect</span> <span class="hljs-literal">off</span>;
+        <span class="hljs-attribute">proxy_pass</span> http://127.0.0.1:8443;
+        <span class="hljs-attribute">proxy_http_version</span> <span class="hljs-number">1</span>.<span class="hljs-number">1</span>;
+        <span class="hljs-attribute">proxy_set_header</span> Upgrade <span class="hljs-variable">$http_upgrade</span>;
+        <span class="hljs-attribute">proxy_set_header</span> Connection <span class="hljs-string">&quot;upgrade&quot;</span>;
+        <span class="hljs-attribute">proxy_set_header</span> Host <span class="hljs-variable">$host</span>;
+        <span class="hljs-comment"># Show real IP in v2ray access.log</span>
+        <span class="hljs-attribute">proxy_set_header</span> X-Real-IP <span class="hljs-variable">$remote_addr</span>;
+        <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+    &#125;
+&#125;</code></pre>
+
+<p>佑奈拿起来对比了一下，<strong>这好像没有什么太大的区别啊？</strong> 然后怀疑了 cipher 的问题。</p>
+<h2 id="DNS-的锅吗？"><a href="#DNS-的锅吗？" class="headerlink" title="DNS 的锅吗？"></a>DNS 的锅吗？</h2><p>与此同时… 开始检查 DNS 是不是没有更新还是怎么样…</p>
+<p>第一次 <code>nslookup</code>: IP 还是原位置</p>
+<p>再运行一次：居然变了！<strong>果然是你 DNS 在搞事情，更新了之后 Mac 也连不上了。</strong></p>
+<h2 id="IP-的锅吗？"><a href="#IP-的锅吗？" class="headerlink" title="IP 的锅吗？"></a>IP 的锅吗？</h2><p>因为佑奈的 VPS 有两个 IP，忘记了主 IP 有 Port Fowarding，把 Cocoa 的公钥放上去之后给了副 IP，结果 SSH 连不上去，还质疑了一下是不是 IP 的访问问题。（在处理这个 ws+tls 的问题的前两天，佑奈因为 DNS 解锁服务和 IP 干扰的问题换了副 IP，此时的出口依然是主 IP，但是 v2ray 依然可以继续使用，所以这里<strong>问题排查完成，和 IP 无关</strong>。</p>
+<h2 id="acme-sh-的锅吗？"><a href="#acme-sh-的锅吗？" class="headerlink" title="acme.sh 的锅吗？"></a>acme.sh 的锅吗？</h2><p>然后开始怀疑 acme.sh 和 Certbot 是不是有什么区别，又去单独看了 Let’s Encrypt 那边的说明：</p>
+<p><img src="https://i.loli.net/2020/03/27/3GCSk78wM2tqBRV.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>下列 ACME 客户端由第三方提供。Let’s Encrypt 不控制或审查第三方客户端，也不能保证其安全性或可靠性。</p>
+<p>此列表上的所有客户端都支持ACMEv2 API (<a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc8555">RFC 8555</a>)。</p>
+<p><strong>Bash</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/srvrco/getssl">GetSSL</a> (bash, also automates certs on remote hosts via ssh)</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Neilpang/acme.sh">acme.sh</a> (Compatible to bash, dash and sh)</li>
+</ul>
+</blockquote>
+<p>acme.sh 在客户端列表里面啊。</p>
+<p>而且也都是 ACME API 的规范，哪有什么区别？然后特意去单独看了看 acme.sh 申请常规的网页 SSL 证书是不是类似的：答案是 <strong>是的啊</strong>！</p>
+<p><img src="https://i.loli.net/2020/03/27/Q82holZkc7iLF3u.png" srcset="/img/loading.gif" alt=""></p>
+<p>继续陷入迷惑。</p>
+<p>然后过了一会儿，Mac 又可以了！去 ip.sb 检查了一下 IP 地址，也是 VPS 的出口地址？！</p>
+<p>这又是什么玄学。</p>
+<p>然后开始怀疑 v2ray 客户端的问题。可是 v2ray 客户端都是跑的 v2ray-core 啊，TLS 和 400 Bad Request 又不会涉及这么多版本。（何况是最新的</p>
+<h2 id="Nginx-是你的锅吗？"><a href="#Nginx-是你的锅吗？" class="headerlink" title="Nginx 是你的锅吗？"></a>Nginx 是你的锅吗？</h2><p>然后和 Cocoa 互相检查了自己的 Nginx，开始找 Nginx 的麻烦了。</p>
+<pre><code class="hljs bash">$ root@japan:~<span class="hljs-comment"># uname -a</span>
+Linux japan 4.19.0-6-amd64 <span class="hljs-comment">#1 SMP Debian 4.19.67-2+deb10u2 (2019-11-11) x86_64 GNU/Linux</span></code></pre>
+
+<pre><code class="hljs bash">root@japan:~<span class="hljs-comment"># nginx -v</span>
+nginx version: nginx/1.14.2</code></pre>
+
+<p>果然：佑奈这边 Debian 10 - Nginx 1.14.2；Cocoa 那边 Ubuntu 18.04 - Nginx 1.14.0</p>
+<p><strong>好，锁定你了。</strong></p>
+<blockquote>
+<p>想起来几年前那段时光，作为萌新被 CentOS 折磨到痛苦的时候，怀疑是不是 Debian 的 minimal install 有问题。（可是事实也不是啊</p>
+</blockquote>
+<p>然后 Cocoa 去到了佑奈的 VPS 上直接操作，发现把 <strong>nginx 的配置文件和证书文件换成 Cocoa 自己的就好了，可以完美连接 v2ray ws+tls</strong> ヽ(｀⌒´)ﾉ┻━┻︵ ┻━┻</p>
+<p>所以是配置文件的问题咯？然后 Cocoa 把佑奈的证书拿了下来——</p>
+<p>发现佑奈的 SSL 公钥是 Elliptic Curve Public Key</p>
+<p><img src="https://i.loli.net/2020/03/27/K4JBploZnwzrAmc.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>对比了一下 Cocoa 的 SSL 公钥是 RSA</p>
+<p><img src="https://i.loli.net/2020/03/27/e6Tj9uFnptQAs7Z.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>这时候就晕了，这个 Elliptic Curve 是什么东西？？</p>
+<p><img src="https://i.loli.net/2020/03/27/QAOiUR8SlVj4Kmb.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><strong>椭圆曲线密码学</strong>？？？</p>
+<p>往前翻了翻 acme.sh 的命令：</p>
+<pre><code class="hljs bash">$ ~/.acme.sh/acme.sh --issue -d node2.v3.domain.com --standalone -k ec-256</code></pre>
+
+<p>因为是跟着教程走的 acme，以为 ec-256 是必要的。结果是因为这个参数生成了 ECC 证书。</p>
+<p><strong>我们认为这个就是最终的问题！</strong></p>
+<h2 id="SSL-是你的锅吗？"><a href="#SSL-是你的锅吗？" class="headerlink" title="SSL 是你的锅吗？"></a>SSL 是你的锅吗？</h2><p>于是就开始把证书换成 RSA，重新使用 CloudFlare 的 API 和 Certbot 重新申请…</p>
+<p><a target="_blank" rel="noopener" href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/</a></p>
+<p>Cocoa 说 ECC 看起来 CloudFlare 应该是支持的样子… </p>
+<p>Cocoa：莫非是 Win 客户端不支持？</p>
+<p>佑奈这边把 RSA 换好了之后 Nginx 也配置好了：</p>
+<p>很高兴的去访问了页面：</p>
+<p><img src="https://i.loli.net/2020/03/27/xLeGDmNdaTAjbJp.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>ヽ(｀⌒´)ﾉ┻━┻︵ ┻━┻ 这个太玄学了太玄学了太玄学了（</p>
+<p>看了看自己的证书是不是 OK 的：</p>
+<p><img src="https://i.loli.net/2020/03/27/WcS4ABpvoZw17UR.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>这不都是对的吗？！哪里出问题了呢？？？！</p>
+<h2 id="TLS1-3-是你的锅吗？"><a href="#TLS1-3-是你的锅吗？" class="headerlink" title="TLS1.3 是你的锅吗？"></a>TLS1.3 是你的锅吗？</h2><p>改了之后还是不行 XD</p>
+<p>然后又是一波疯狂的 Google Chrome <strong>无法连接</strong> 画面。</p>
+<p><img src="https://i.loli.net/2020/03/27/4VhHmWNIxJlpXtT.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>ヽ(｀⌒´)ﾉ┻━┻︵ ┻━┻</p>
+<p>直到… Cocoa 说了一句话：<strong>莫非是三级域名的问题？</strong></p>
+<p><strong>我不信我不信我不信</strong></p>
+<h2 id="三级域名是你的锅吗？？？？？"><a href="#三级域名是你的锅吗？？？？？" class="headerlink" title="三级域名是你的锅吗？？？？？"></a>三级域名是你的锅吗？？？？？</h2><blockquote>
+<p>真的真的申请了很多很多的 SSL 证书，而且不爽就删掉（x</p>
+</blockquote>
+<p>之后又是很流利的一波证书申请和 Nginx 重新配置…</p>
+<p><img src="https://i.loli.net/2020/03/27/uWxDjGNTiewPAz5.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>然后又刷新了一下…</p>
+<p><img src="https://i.loli.net/2020/03/27/RPHMfO8VBI9k6Jl.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://i.loli.net/2020/03/27/LTIdKcmyFoM7W1z.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><strong>震撼猫猫</strong>，居然真的是三级域名的锅！</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>和 Cocoa 把能怀疑的问题全部怀疑了一遍，当时把相关的 issue 照来了都没有办法修好的问题：<strong>居然是 CloudFlare 的 CDN 证书不支持 三级域名</strong>。</p>
+<blockquote>
+<p>SSL covers only <a target="_blank" rel="noopener" href="http://example.com/">example.com</a> and <em>.example.com. To get down to *.</em>.example.com, you need a dedicated certificate with Custom Hostnames so you can cover something like <a target="_blank" rel="noopener" href="http://www.sub.example.com/">www.sub.example.com</a></p>
+<p>– <a target="_blank" rel="noopener" href="https://community.cloudflare.com/t/third-level-domain/63383">https://community.cloudflare.com/t/third-level-domain/63383</a></p>
+</blockquote>
+<p>这不是 v2ray 教程和各位博客主写的不好，</p>
+<p>这也不是 Let’s Encrypt 不够良心提供不了足够的 SSL 加密方法，</p>
+<p>这也不是可怜的 Debian 和 Nginx 的问题。</p>
+<p><strong>这是 CloudFlare 不好好写清楚的原因啊！</strong></p>
+<p><strong>你不支持三级域名的时候怎么不说呢， Wildcard 和 Subdomain 倒是写的很清楚…</strong></p>
+<p>这个问题来源于佑奈想要用域名分级的办法来管理各个服务器的地址，是为了方便自己维护和操作…</p>
+<p>可是 CloudFlare 这个要求… 也不写在文档上，就… ヽ(｀⌒´)ﾉ┻━┻︵ ┻━┻</p>
+<p>所以如果你的 v2ray ws + tls + CloudFlare CDN 方案怎么更改都改不过的话，<strong>请考虑你的域名是不是超出了 CloudFlare 的限制</strong>。</p>
+<h1 id="引用和感谢"><a href="#引用和感谢" class="headerlink" title="引用和感谢"></a>引用和感谢</h1><p>本文由 花見佑奈 和 香織可可 一同完成，期间使用的资源和连接以及引用都已经在下面附上链接。</p>
+<p>再次感谢 v2ray 开发组和每一个用户的付出。</p>
+<p>KiraKira/vTemplate: <a target="_blank" rel="noopener" href="https://github.com/KiriKira/vTemplate">https://github.com/KiriKira/vTemplate</a></p>
+<p>白话文教程: <a target="_blank" rel="noopener" href="https://toutyrater.github.io/">https://toutyrater.github.io/</a></p>
+<p>v2ray-core/issues833: WebSocket+TLS+nginx与Cloudflare的问题: <a target="_blank" rel="noopener" href="https://github.com/v2ray/v2ray-core/issues/833">https://github.com/v2ray/v2ray-core/issues/833</a></p>
+<p>v2ray-core/issues998: Websocket不套CDN能正常使用，但是套了CDN就不行了: <a target="_blank" rel="noopener" href="https://github.com/v2ray/v2ray-core/issues/998">https://github.com/v2ray/v2ray-core/issues/998</a></p>
+<p>Let’s Encrypt ACME 客户端: <a target="_blank" rel="noopener" href="https://letsencrypt.org/zh-cn/docs/client-options/">https://letsencrypt.org/zh-cn/docs/client-options/</a></p>
+<p>CloudFlare ECC: <a target="_blank" rel="noopener" href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/</a></p>
+<p>Third Level Domain - CloudFlare Community: <a target="_blank" rel="noopener" href="https://community.cloudflare.com/t/third-level-domain/63383">https://community.cloudflare.com/t/third-level-domain/63383</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/v2ray/">v2ray</a>
+                    
+                      <a class="hover-with-bg" href="/tags/CloudFlare/">CloudFlare</a>
+                    
+                      <a class="hover-with-bg" href="/tags/CDN/">CDN</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/08/22fdf6e2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">那是我们的星星</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/57fa3240/">
+                        <span class="hidden-mobile">冬天雨里，和顺路的温暖</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;post.origin</p>
+  <div id="tocbot"></div>
+</div>
+<script>
+  let tocHeader = document.getElementsByClassName('toc-header')[0]
+  tocHeader.innerHTML = '<i class="iconfont icon-list cc_cursor"></i> 目录'
+</script>
+    </div>
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3" style="color: #EC4E6F">
+    
+      这个地方存放了 11.3k 个记忆元素
+      </br>
+    
+    ©️ 2016 - 2020 花見佑奈 
+    <i class="iconfont icon-love"></i>
+    Theme by <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    edited by <a target="_blank" rel="noopener" href="https://github.com/hanamiyuna/hexo-theme-fluid"><b>Hanami Yuna</b></a>
+    <br>
+
+    
+
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "被 CloudFlare 耽误的 v2ray ws+tls&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 100,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

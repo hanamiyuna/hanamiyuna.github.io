@@ -1,0 +1,586 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#FF5E81">
+  <meta name="description" content="佑奈的梦想是希望大家都能够生活在自己希望和喜欢的地方。希望每一个人都能够因为自己的选择，因为自己的周围的每一个生命，环境，知识而开心，不会需要再去担忧更多的东西，可以有时间去探索更多自己想要去探索获得的东西，因为这样，才是能专注追求自己的世界呀。">
+  <meta name="author" content="花見佑奈">
+  <meta name="keywords" content="hanamiyuna">
+  <title>情感模型预测导论 - 七彩繁星下</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>七彩繁星下</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://i.loli.net/2019/09/26/DxrmuNb4ZfGMYLz.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <p class="mt-3 post-meta author-line">
+                
+                  <i class="fas fa-pen-fancy"></i> 作者 花見佑奈
+                
+              </p>
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  2019 年 9 月 29日 星期日 19:14 晚上
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    本文有 2.5k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      阅读时间 ≈ 8 分钟
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">情感模型预测导论</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><strong>这里只是作为一个理论基础存在的论证文本。</strong><br>在大多数国外的网站上一般直接称呼这样的理论叫做是 Mental Model Theory（心智模型理论），在 Wikipedia 的英文词条（也可以参考 Wikipedia 的心智模型词条，这个词条里面只有很短的一部分内容来叙述这个概念）中可以看到更加详细的内容叙述，在其词条的 Summary 中就有简述，Mental Model 是一个可以用于解释一个人的思考过程和其在现实世界中的实际工作方式的方法；而在 APA Dictionary of Psychology 中查到的 Mental Model 是这样描述的：</p>
+<blockquote>
+<p>是一组元素之间的关系的任意内部表达形式，例如办公室与部门中的办公员工之间，数学与物理问题的要素，三段论的术语以及空间中各个对象的配置，这样的模型可能包含感知量，并且本质上可能是抽象的。对心智模型的学习可以对他们进行操作以对可能场景的动态模拟，这个模拟也被认为是决策中的关键组成部分。</p>
+</blockquote>
+<p>Jay Wright Forrester 这样描述：</p>
+<blockquote>
+<p>世界的景象就在我们的身边，在我们大脑中所感受到的一切，就只是一个模型。没有人可以在他的闹钟想象一个完整的世界体验，亦或是政府，国家。在他的大脑中他只有其特定的概念，以及它们之间的关系，然后用这些元素来表示整个现实世界系统。<br>The image of the world around us, which we carry in our head, is just a model. Nobody in his head imagines all the world, government or country. He has only selected concepts, and relationships between them, and uses those to represent the real system (Forrester, 1971).</p>
+</blockquote>
+<h2 id="情绪模型和心智模型"><a href="#情绪模型和心智模型" class="headerlink" title="情绪模型和心智模型"></a>情绪模型和心智模型</h2><h3 id="PAD-模型"><a href="#PAD-模型" class="headerlink" title="PAD 模型"></a>PAD 模型</h3><blockquote>
+<p><strong>Albert Mehrabian</strong> 教授早在1974年提出了PAD情感模型，使用三个维度的数据 (Pleasure-Arousal-Dominance) 来表达情感。</p>
+<p>—— 情感可视化 by sdq</p>
+</blockquote>
+<p>其中：</p>
+<ul>
+<li><p>P代表愉悦度 (Pleasure-displeasure)，表示主体情感状态的正负性；</p>
+</li>
+<li><p>A代表激活度 (Arousal—nonarousal)，表示主体的神经生理激活水平；</p>
+</li>
+<li><p>D代表优势度(Dominance-subm issiveness)，表示主体对情景和他人的控制状态。</p>
+</li>
+</ul>
+<blockquote>
+<p>研究表明，利用 P 、A 、D 3 个维度可有效地解释人类的情感。Mehrabian 等人利用这3个维度可解释其他42种情感量表中的绝大部分变异 ，而且这3个维度并不限于描述情感的主观体验，它与情感的外部表现、生理唤醒有较好的映射关系。前人研究表明：PAD三维情感模型可以充分地表达和量化人类情绪和情感，是情感计算研究的基础 。</p>
+</blockquote>
+<h3 id="情绪轮"><a href="#情绪轮" class="headerlink" title="情绪轮"></a>情绪轮</h3><p>下面就是心理学家 Robert Plutchik 提出的情绪轮，这个方法在现在也被认为是很重要的对一般情绪反应最具有影响力的分类方法之一。（这个图片的翻译过程比较，难以抉择，参考了其他的情绪轮的分类方法，如果有不准确的话可以在下面提出异议。图片制作 Credit to: Makito）</p>
+<p><img src="https://i.loli.net/2019/10/08/RSGIrPmW8hbXnla.png" srcset="/img/loading.gif" alt=""></p>
+<p>在很多大学的论文页面和大学实验室网站都可以找到很多相关的资源，但是我们在这里不探讨怎样去计算一个人准确的思考过程，以及他怎样去作出一个决定，我们在这里先做一个探讨，在一个人的人格和情绪变化上，我们是否可以通过机器学习来完成一个预测，以及寻找其起因。如果理论是正确的，那么这个系统将可以用于预测极端心理障碍事件，从而预防迫害，自杀，也可以在很大程度上寻找，很多情感障碍的心理障碍是从何而起，又应该怎样化解这样的问题。</p>
+<p>这个课题是一个相当大的范围，这个课题相关的内容可以联系起主要的学科：认知心理学，教育心理学，大众心理学，神经经济学，精神病学，神经科学，微积分学，数理生物学，统计学，计算机科学。当然也还有其他的学科内容参与在内，在这里就不再赘述。</p>
+<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>创建一个合理的模型来进行人类情感预测；<br>使用这个模型进行行为预测和特殊情况的预防。</p>
+<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><p>先明确一个很重要很重要的内容，在现在的学术体系中可以找到这样的总结（该总结来自于 Mental Model Global Laboratory）：<br>心智模型的原则。</p>
+<ol>
+<li><strong>每一个模型都代表了一个可能性</strong>。其模型结构符合其现实结构，但是其也有对“对立性”，“偶然性”，“倾向性”及其其他的性质表达。模型是一个用于在时间线上用来表达一组特定序列事件的有着变化性质和动态结构的工具。</li>
+<li><strong>模型在特定范围内有着特定的象征</strong>。*这代表着，其组成和结构关系是可以匹配它们所表达的特定事件情形的。它们完全基于视觉图形，但是它们也可以表达其抽象性质的结构，所以模型可以完全表达关系结构的拓展性质。它们也可以用于补充描述一些象征意义的元素，比如“否定”。</li>
+<li><strong>模型可以描述减弱，增强，以及解释</strong>。*在一个有效的减弱中，其可以对前置模型进行解释；在一个有效的增强中，知识储量可以颠覆模型给出的可能性结果，所以一旦可用信息足够的话，所得出的结论可能远远超出其预计。在一个绑定演化中，知识被用于解释新的概念来保持其解释性。</li>
+<li><strong>理论提供了“双向进程”的概念依据</strong>。假设系统 A 创建了一个被计算能力限制的初始化前置模型，这个系统并不可以表达其递归推论，系统 B 则可以继续这样的递归影响，所以会造成一个如果我们寻找特定例子的话，可能会获得一个结论并不支持的例子。</li>
+<li><strong>可替换模型的数量越巨大，其难度越高</strong>：我们花的时间越长，就越容易出错，特别是我们过量期待去理解概率的时候。在一个特定序列事件模型的模拟中，越靠近晚期的序列，越容易出现极端事件，也就会导致其花费更多时间去获得推论。</li>
+<li><strong>什么是真实的</strong>：心智模型只能用于代表什么是真实的，如果其系统依赖于错误的事物，预测相当系统和十分令人信服的谬论的预测就会发生。类似的原则适用于可能而不是不可能的预测，允许而不是不允许的表示，诸如此类。<br>“如果”的意义可能因输入的内容和知识的不同而不同。比如，我们的地理知识就会发生这样的分离，杰在斯德哥尔摩或者瑞典，但是与其他相关的取析系统不同，比如这样的结论就是，杰在瑞典。</li>
+</ol>
+<p>这个原则是十分显而易见的，其实这个部分的内容有很大一部分的程度都是在统计学中就有很多描述与论证，这个也是很重要的基础理论之一。</p>
+<h2 id="组合这个模型"><a href="#组合这个模型" class="headerlink" title="组合这个模型"></a>组合这个模型</h2><p>在早期的猜想过程中，我认为，</p>
+<ul>
+<li><p>情感心智模型是一个很复杂的系统，它需要可能 <strong>多于数个维度</strong> 的 <strong>向量和对象</strong> 才能表达。</p>
+</li>
+<li><p>我们很难去评判我们对情感的 <strong>描述</strong>，到底是怎样的一个程度。</p>
+</li>
+<li><p>我们很难去寻找到一个准确的 <strong>界定范围</strong> 来描述，我们的情感到底是怎样的。</p>
+</li>
+<li><p>情感心智模型是一个极其复杂的状态演化系统，其可能会 <em>受到</em> <strong>特定事件的特定影响</strong>，也就是数学中的：例外。</p>
+</li>
+<li><p>这样的一个模型是十分难以去考量的，从数据的 <strong>输入</strong>，到数据的 <strong>输出</strong>。</p>
+</li>
+</ul>
+<p>后来我尝试转化了一个很有趣的思维方式，某种意义上解决了这样的问题：</p>
+<ul>
+<li>任何系统都可以被 <a href="#基本元素组成"><strong>基本的元素组合</strong></a> 所表达。</li>
+<li>程度既然是程度，它就是一个 <strong>区间</strong>，是一个范围。</li>
+<li>界定范围是不需要的，它只存在一个 <strong>交集区间</strong> 的必要。<br>这样的模型其实是类似于一个山峰山谷的状态，对象在这个可预测模型中演化，和运动。</li>
+</ul>
+<p>在这样的系统中，我们需要的东西是什么？<br>已经提到了，任何系统都可以被基本的元素组合所表达，也就是说，即便是如此复杂的系统，也可以拆分为简易的小元素来进行组合搭配。在基本的设想中，情感<br>心智模型的区间范围。<br>如果遇到了山峰类型的事件但是没有足够的能量（参考能量心理学）来应对的话，可能会造成下滑，也就是所谓的下坠，但是如果遇到了山谷类型的事件，即便没有足够的能量来应对的话，也可以发展为下坠，但是这里提到的下坠又是两个截然不同的概念。</p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%83%85%E6%84%9F%E4%B8%89%E7%BB%B4%E7%90%86%E8%AE%BA">情感三维理论 - 百度百科</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/PAD%E6%83%85%E6%84%9F%E6%A8%A1%E5%9E%8B">PAD 情感模型 - 百度百科</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d32c2b4cb765">知识：PAD三维情感模型 by 余永海_情感设计 - 简书</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/shidanqing/%E6%83%85%E6%84%9F%E5%8F%AF%E8%A7%86%E5%8C%96-6123d1f00db7">情感可视化 by sdq - Medium</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.m.wikipedia.org/wiki/Mental_model">Mental Model - Wikipedia</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5468631/">Mental models accurately predict emotion transitions</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.modeltheory.org/about/what-are-mental-models/">What are mental models?</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%90%86%E8%AE%BA/">理论</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B/">心智模型</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%83%85%E6%84%9F%E6%A8%A1%E6%8B%9F/">情感模拟</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%8C%9C%E6%83%B3/">猜想</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A4%E7%9F%A5%E5%BF%83%E7%90%86%E5%AD%A6/">认知心理学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/107aa11b/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">像素画的学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/09/b4388636/">
+                        <span class="hidden-mobile">这里是第一天的内容呢</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;post.origin</p>
+  <div id="tocbot"></div>
+</div>
+<script>
+  let tocHeader = document.getElementsByClassName('toc-header')[0]
+  tocHeader.innerHTML = '<i class="iconfont icon-list cc_cursor"></i> 目录'
+</script>
+    </div>
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3" style="color: #EC4E6F">
+    
+      这个地方存放了 11.3k 个记忆元素
+      </br>
+    
+    ©️ 2016 - 2020 花見佑奈 
+    <i class="iconfont icon-love"></i>
+    Theme by <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    edited by <a target="_blank" rel="noopener" href="https://github.com/hanamiyuna/hexo-theme-fluid"><b>Hanami Yuna</b></a>
+    <br>
+
+    
+
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "情感模型预测导论&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 100,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#FF5E81">
+  <meta name="description" content="佑奈的梦想是希望大家都能够生活在自己希望和喜欢的地方。希望每一个人都能够因为自己的选择，因为自己的周围的每一个生命，环境，知识而开心，不会需要再去担忧更多的东西，可以有时间去探索更多自己想要去探索获得的东西，因为这样，才是能专注追求自己的世界呀。">
+  <meta name="author" content="花見佑奈">
+  <meta name="keywords" content="hanamiyuna">
+  <title>像素画的学习笔记 - 七彩繁星下</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>七彩繁星下</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://i.loli.net/2019/12/10/QctW94CsLMTO6US.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <p class="mt-3 post-meta author-line">
+                
+                  <i class="fas fa-pen-fancy"></i> 作者 花見佑奈
+                
+              </p>
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  2019 年 12 月 10日 星期二 14:03 下午
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    本文有 3.3k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      阅读时间 ≈ 11 分钟
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">像素画的学习笔记</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="重要的概念"><a href="#重要的概念" class="headerlink" title="重要的概念"></a>重要的概念</h1><h2 id="抗锯齿-Anti-aliasing-AA"><a href="#抗锯齿-Anti-aliasing-AA" class="headerlink" title="抗锯齿 Anti-aliasing (AA)"></a>抗锯齿 Anti-aliasing (AA)</h2><p>抗锯齿是一种将不平整的边缘变光滑的技术。</p>
+<p>可能大家通常见到这个词的时候第一反应都是建模工具或者游戏引擎中提到的「抗锯齿」，基本类似，但是这里说的抗锯齿，表达的是<strong>人工抗锯齿 (Manual Anti-aliasing)</strong>。本身的词汇就表达了原有的意思，你需要手动把一个一个的像素放置在图像上来缓和这些勾勒线条或者是看上去过于刺眼的部分，当然现在的很多工具也可以做到自动化抗锯齿，但是在最终作品的表达上，还是有很多需要手工去完成的部分。</p>
+<p>抗锯齿的工作原理很简单：将过渡颜色添加到线条的扭结处以使其平滑。例如，如果在白色背景上有黑线，则可以在该线的边缘添加灰色像素以使其平滑。</p>
+<h2 id="抖动-Dithering"><a href="#抖动-Dithering" class="headerlink" title="抖动 Dithering"></a>抖动 Dithering</h2><p>抖动是由不同样式 (Pattern) 的像素所组成的。它会使两种不同颜色间的转化更为自然，而且这种方法并不会在调色板里增加新的颜色。它也被用作创建纹理 (Texture)。</p>
+<p>色彩稳定是像素绘画师很在意的事情。「抖动」就是说，在不使用更多颜色的情况下，解决阴影问题的方法。和传统的绘画中「交叉阴影线」或者「点画」很相似（比如素描）。使用的时候，采用两种颜色并且对其进行交错的处理，形成一个所谓的「渐变」效果。</p>
+<p><img src="https://i.loli.net/2019/12/10/9uOEbnv3jTCU4xL.jpg" srcset="/img/loading.gif" alt=""></p>
+<center>from <a target="_blank" rel="noopener" href="https://makegames.tumblr.com/post/42648699708/pixel-art-tutorial">Pixel Art Tutorial</a></center>
+
+<p>上面的部分就像是普通情况下我们所能得到的「渐变」的效果，而下面仅仅只是使用了三种颜色就达到了类似的结果。</p>
+<p>抖动给了我们一种很「复古 (Retro) 」的风格感，在过去的老式游戏机中经常能够看到这样的效果，因为在那个时候游戏制作者和艺术家在表达颜色的时候有很大的局限性。</p>
+<h3 id="不同的抖动风格"><a href="#不同的抖动风格" class="headerlink" title="不同的抖动风格"></a>不同的抖动风格</h3><p>抖动最常见的形式是50/50 dither, 又可以叫做50% dither，或<strong>棋盘样式 (Checkerboard Pattern)</strong>。</p>
+<p><strong>风格抖动 (Stylized Dithering)</strong> 是另外一种技术，常被描述为在样式中加入小的图形。</p>
+<p><strong>交错抖动 (Interlaced Dithering)</strong> 使得两块抖动区域接触在一起。它会有这个名字是因为两个抖动的边缘融合在一起。这一技术令混合多个抖动来制造渐变成为可能。</p>
+<p><strong>随机抖动 (Random Dithering)</strong> 是一种不常见的抖动，通常情况下不推荐使用。因为它在图像中加入了很多噪点。虽然适量的运用在某些情况是有益的，但是大多数时候希望你能避免使用。</p>
+<h2 id="像素群-Pixel-Clusters"><a href="#像素群-Pixel-Clusters" class="headerlink" title="像素群 Pixel Clusters"></a>像素群 Pixel Clusters</h2><blockquote>
+<p>像素群是由单个像素组成的。但是如果单一的像素不与相同颜色的像素相邻，在绝大多数时间里它将是近乎无用和无意义的。像素画师常会考虑由同种颜色的像素紧密结合而成的图形，并营造一种不透明的、平面的图形。艺术家绘制的像素群往往是决定像素画成败的关键。</p>
+<p>——Ramblethread （来源：知乎）</p>
+</blockquote>
+<p>像素画之所以和普通的传统绘画，以及和普通的电子艺术作品不同，关键就在于这需要艺术家专注在处理每一个像素点的位置上，这些位置看起来很随机，甚至无足轻重，但是事实上就是这些像素点带来了极具意义的像素作品。</p>
+<blockquote>
+<p>像素画是一门关于控制的学问。</p>
+</blockquote>
+<p>尽管如此，像素并非独立。像素如果是独立存在的话就会变成像是噪点一样的存在。单个像素往往是以像素群的组成部分的形式出现的，一组组有着相同颜色的像素共同构建出纯色的区域。虽然单个像素是我们最小可用的构图单位，但是像素群却是我们用来考虑如何防止像素孤立的单位。单个像素不是孤立的，像素群也不是。</p>
+<p>比如下图，改变像素的形状也会带来相邻像素群的感官体验。</p>
+<p><img src="https://i.loli.net/2019/12/10/bxHVp4GsMtA8KPS.png" srcset="/img/loading.gif" alt=""></p>
+<center>from <a target="_blank" rel="noopener" href="http://pixeljoint.com/forum/forum_posts.asp?TID=11299&PID=139318#139318">Creating Pixel Art - Pixel art tutorial</a></center>
+
+<p>虽然单独的像素如同噪点一般，但是如果一个单独的像素有着与它周围环境不同的颜色，它能够被算作一个（使用抗锯齿方法解决）缓冲，也可以被看作是像素群的组成部分。</p>
+<p><img src="https://i.loli.net/2019/12/10/qhfkpsP6bvWeTnz.gif" srcset="/img/loading.gif" alt=""></p>
+<center>from <a target="_blank" rel="noopener" href="http://pixeljoint.com/forum/forum_posts.asp?TID=11299&PID=139318#139318">Creating Pixel Art - Pixel art tutorial</a></center>
+
+
+
+<h2 id="注意的地方"><a href="#注意的地方" class="headerlink" title="注意的地方"></a>注意的地方</h2><h3 id="错误的抗锯齿"><a href="#错误的抗锯齿" class="headerlink" title="错误的抗锯齿"></a>错误的抗锯齿</h3><p>抗锯齿的存在是为了解决<strong>边缘平滑</strong>的，如果使用了太多的抗锯齿，图片看上去就会模糊很多，甚至是丢失主题，线条不明确。当然太少也不行，要准确，记住：</p>
+<blockquote>
+<p>像素画是一门关于控制的学问。</p>
+</blockquote>
+<h3 id="问题锯齿"><a href="#问题锯齿" class="headerlink" title="问题锯齿"></a>问题锯齿</h3><p>锯齿会出现在一些情况当中：</p>
+<ol>
+<li>当一个或是一组像素出现在了不该出现的位置，干扰了一条线段应有的走向；</li>
+<li>当一条线段没有使用抗锯齿。</li>
+</ol>
+<p>任何糟糕的像素技巧都会导致锯齿，所以通常而言，我们把他们和线段放在一起讨论。</p>
+<p>下面就是针对不同情况的解决方案。</p>
+<p><strong>改变线条的长度</strong></p>
+<p><img src="https://i.loli.net/2019/12/10/xOrIDemZy8W5PT9.png" srcset="/img/loading.gif" alt=""></p>
+<center>from <a target="_blank" rel="noopener" href="http://pixeljoint.com/forum/forum_posts.asp?TID=11299&PID=139318#139318">Creating Pixel Art - Pixel art tutorial</a></center>
+
+<p>这一问题通常是由部分线段的过长或过短造成的，这会在图上产生一种难看的间隔。使用长度更为统一的像素能够平缓像素间的过渡，进而改善这个问题。</p>
+<p><strong>使用抗锯齿</strong></p>
+<p>除非线段是平行，垂直，或是成 45 度角，否则线段通常会有锯齿现象。</p>
+<p><img src="https://i.loli.net/2019/12/10/vQBbD7fsqmKaJux.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://i.loli.net/2019/12/10/9CTNY4bqWFK5cZg.png" srcset="/img/loading.gif" alt=""></p>
+<center>from <a target="_blank" rel="noopener" href="http://pixeljoint.com/forum/forum_posts.asp?TID=11299&PID=139318#139318">Creating Pixel Art - Pixel art tutorial</a></center>
+
+<p>这吃因为像素本身就是一个一个的正方形，而我们要把像素放置在一个个的小方格里，这种作画方式也让折线和曲线的绘制变得更加困难。抗锯齿是解决问题的好办法。</p>
+<h3 id="错误的抖动"><a href="#错误的抖动" class="headerlink" title="错误的抖动"></a>错误的抖动</h3><p>常见的误用抖动有好几种。但是最常见的是<strong>用了太多</strong>。如果你的半个图画都有抖动效果，那么你应该要考虑在调色板里加入新的颜色。理论上来说抖动应该在一块不透明区域的最后部分逐渐收缩。如果你用了太多的抖动，那么抖动区域本身就会变成一块不透明区域。</p>
+<p>抖动不是作为两种颜色之间的缓冲而存在，它带来了很多我们不需要的纹理。虽然创造纹理是抖动的重要功能之一，但也不能滥用。如果你计划用抖动来缓冲不同的颜色，但是最后却画出了新的纹理，那么这是不成功的。</p>
+<p>所以有人会问，多少抖动才合适呢？这取决于你的调色板有多大，或者说，你希望过渡的两种颜色之间的对比大不大。如果两个颜色的色相或者值的对比度越小，那么抖动的程度也应该越小。</p>
+<p><img src="https://i.loli.net/2019/12/10/qWvrO1ZNL9f2tCw.png" srcset="/img/loading.gif" alt=""></p>
+<center>from <a target="_blank" rel="noopener" href="http://pixeljoint.com/forum/forum_posts.asp?TID=11299&PID=139318#139318">Creating Pixel Art - Pixel art tutorial</a></center>
+
+<center>左边对比度过大，右边刚好合适</center>
+
+<h3 id="色带"><a href="#色带" class="headerlink" title="色带"></a>色带</h3><p>简单的说，当像素并排在一起的时候，就产生了色彩带。当相邻的像素在网格 (Grid) 上排列的时候，网格就变得更显眼，这对可视分辨率 (Apparent Resolution) 不是一件好事。</p>
+<p><strong>贴合 Hugging</strong>: </p>
+<p><img src="https://i.loli.net/2019/12/10/TPzyi1dHEDpqfL2.png" srcset="/img/loading.gif" alt=""></p>
+<p>这里有一块不透明的颜色被一串像素勾勒出轮廓。使用轮廓线是可以的，但是需要注意不要将轮廓线和图形并列在一起，因为这会使网格异常明显。</p>
+<p><strong>臃肿像素 Fat pixels</strong>:</p>
+<p>臃肿的像素会在小方块，线段和更大的色彩带里出现。</p>
+<p><strong>一步差距带来的问题 Skip-one banding</strong>:</p>
+<p><img src="https://i.loli.net/2019/12/10/grzN8PQdxyl9mCJ.png" srcset="/img/loading.gif" alt=""></p>
+<p>即便有着不同的空间，但是紫色的部分造成了困惑，解决方法就是不让它们对齐。</p>
+<p><strong>角度问题 Degree banding</strong>:</p>
+<p><img src="https://i.loli.net/2019/12/10/f21uTavid9cS8mg.png" srcset="/img/loading.gif" alt=""></p>
+<p>虽然像素并列的线条只有一个像素那么宽，但是色彩带仍然存在。</p>
+<h3 id="枕式阴影"><a href="#枕式阴影" class="headerlink" title="枕式阴影"></a>枕式阴影</h3><p>这是一种由内而外不断加深的阴影。枕式阴影是非常不好的例子，因为这种阴影与光源完全没有对应关系。它只和阴影部分的形状有关，而不是和光线如何影响物体有关。枕式阴影经常和彩色带一同产生。处理这种问题的方法很简单，只要注意光线是从哪边投射过来的。</p>
+<p>比如下面的例子：</p>
+<p><img src="https://i.loli.net/2019/12/10/7Ol94mZ3AvDRgGk.png" srcset="/img/loading.gif" alt=""></p>
+<center>左：没有光源，右：正确的阴影，光源处于左上方</center>
+
+<p>这个例子中枕式阴影错误的地方不在于它将光源设置在了物体的正前方（在读者的位置），因为你不一定要把光源放在角落。它错误的原因是没有考虑到三维事物是如何被照亮的，物体只是被当作二维平面来对待。下面我们把光源设置在物体的正前方。</p>
+<p><img src="https://i.loli.net/2019/12/10/bJXLVvo9mpTehxN.png" srcset="/img/loading.gif" alt=""></p>
+<h3 id="噪点"><a href="#噪点" class="headerlink" title="噪点"></a>噪点</h3><p><strong>单独的像素</strong>（不属于像素群的像素）往往不能传达足够多的信息，所以它们通常只会带来噪声。<strong>噪声或者噪点</strong>起到的作用只是在阻碍观画者，除此以外没有任何益处。在像素画中，噪声常由单独的像素构成。为了方便理解，Noise 在这里只代表单一的像素所产生的噪点。美工在运用25% 抖动（事实上，所有的抖动）的时候需要非常小心由单个像素所带来的噪点。单一的像素占据一个网格的同时，会把整幅图的分辨率暴露出来。</p>
+<ol>
+<li><strong>作为反射的高光</strong> (Highlight)。单独放置的一个细节会引来很多的注意力，但有时候这恰恰就是你所希望的。高光就是这么一个例子。</li>
+<li><strong>处理小而重要的细节</strong>。你通常会在处理小图片上的细节时碰到这种情况。例如一个很小的精灵身上的眼睛，或者小鸟的喙、小星星，小泡泡之类。</li>
+</ol>
+<h3 id="选择性地勾勒轮廓"><a href="#选择性地勾勒轮廓" class="headerlink" title="选择性地勾勒轮廓"></a>选择性地勾勒轮廓</h3><p>选择性地勾勒轮廓是 Selective Outlining 的缩写，也被称为残缺的轮廓线）<strong>运用抗锯齿技术</strong>把一个轮廓线和背景色融合在一起。这意味着 Sel-out 是一个<strong>AA的反面例子</strong>。</p>
+<p>与其一直使用黑色，不如使用一种更接近图像本身颜色的颜色。 同样，我们沿着图像的边缘改变轮廓的亮度，让光源决定我们应用哪种颜色才是最好的。</p>
+<h2 id="阴影的规则"><a href="#阴影的规则" class="headerlink" title="阴影的规则"></a>阴影的规则</h2><p>阴影是一个新手经常遇到的问题，这里有一些打阴影的时候可以参考的规则：</p>
+<ol>
+<li><strong>不要使用渐变</strong>。新手最容易犯的错误。渐变看起来很不舒服，甚至没有试着遵循光线在表面上的真实投射方式。</li>
+<li><strong>不要使用枕式阴影</strong>。枕式阴影通常发生在外面的阴影向内递减。这种问题被称之为枕式阴影是因为看上去不舒服和让人困惑。</li>
+<li><strong>不要使用过多阴影</strong>。很容易就能够理解「细致和复杂的颜色一定可以表现的更加真实」这样的概念。在真实世界里，不论如何，我们看东西都是有亮色程度和暗色程度来进行区分的（我们的大脑通过这样的方式来过滤信息，也就是理解三维物体的方式）。使用颜色的时候，使用两个暗色（<strong>暗</strong>和<strong>很暗</strong>），两个明色（<strong>亮</strong>和<strong>很亮</strong>）。</li>
+<li><strong>不要使用过于近似的颜色</strong>。并没有特别明确的意义去使用两个近似的颜色，除非你希望这个画面看上去很<em>模糊</em>。</li>
+</ol>
+<h2 id="颜色的规则"><a href="#颜色的规则" class="headerlink" title="颜色的规则"></a>颜色的规则</h2><ol>
+<li><strong>低饱和度</strong>和<strong>低明亮度</strong>的颜色看上去更自然，更成熟</li>
+<li>想象一个色环，两个颜色的距离越远，它们分离就更多，反之，颜色相近的两个颜色，看上去就会舒服。</li>
+<li>你用的颜色越多，你的图像看上去就会更加偏离主题。想要表达正确的内容，应该减少颜色的使用，并且仅使用两个到三个主要的颜色。</li>
+</ol>
+<h1 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h1><p><a target="_blank" rel="noopener" href="http://beaconguide.me/">灯塔实验室</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/dengtashiyanshi">灯塔实验室（知乎专栏）</a></p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p><a target="_blank" rel="noopener" href="https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-2d1e31a5ceab">https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-2d1e31a5ceab</a></p>
+<p><a target="_blank" rel="noopener" href="http://pixeljoint.com/forum/forum_posts.asp?TID=11299&amp;PID=139318#139318">http://pixeljoint.com/forum/forum_posts.asp?TID=11299&amp;PID=139318#139318</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/19884947">https://zhuanlan.zhihu.com/p/19884947</a></p>
+<p><a target="_blank" rel="noopener" href="https://makegames.tumblr.com/post/42648699708/pixel-art-tutorial">https://makegames.tumblr.com/post/42648699708/pixel-art-tutorial</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8C%87%E5%8D%97/">指南</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%83%8F%E7%B4%A0%E5%8C%96/">像素化</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%83%8F%E7%B4%A0%E7%94%BB/">像素画</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BD%8E%E7%94%BB%E7%B4%A0/">低画素</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/d7f9cf4e/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">小小世界的构想 · 一</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/09/a0d0fa1b/">
+                        <span class="hidden-mobile">情感模型预测导论</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;post.origin</p>
+  <div id="tocbot"></div>
+</div>
+<script>
+  let tocHeader = document.getElementsByClassName('toc-header')[0]
+  tocHeader.innerHTML = '<i class="iconfont icon-list cc_cursor"></i> 目录'
+</script>
+    </div>
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3" style="color: #EC4E6F">
+    
+      这个地方存放了 11.3k 个记忆元素
+      </br>
+    
+    ©️ 2016 - 2020 花見佑奈 
+    <i class="iconfont icon-love"></i>
+    Theme by <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    edited by <a target="_blank" rel="noopener" href="https://github.com/hanamiyuna/hexo-theme-fluid"><b>Hanami Yuna</b></a>
+    <br>
+
+    
+
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "像素画的学习笔记&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 100,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
